@@ -1,0 +1,14 @@
+Accumulo (ref: https://accumulo.apache.org/1.3/user_manual/Accumulo_Design.html)
+    Functional (Considering responsibilites of components/packages)
+    =IF(ISNUMBER(SEARCH("master",B2)),5, IF(OR(ISNUMBER(SEARCH("tabletserver",B2)),ISNUMBER(SEARCH("gc",B2))),4, IF(OR(ISNUMBER(SEARCH("client",B2)),ISNUMBER(SEARCH("test",B2)),ISNUMBER(SEARCH("util",B2)),ISNUMBER(SEARCH("parser",B2)),ISNUMBER(SEARCH("file",B2))),3, IF(OR(ISNUMBER(SEARCH("data",B2)),ISNUMBER(SEARCH("logger",B2)),ISNUMBER(SEARCH("cloud",B2))),2,1))))
+    Architecture (Considering the number of each component in the environment)
+    =IF(OR(ISNUMBER(SEARCH("master",B2)),ISNUMBER(SEARCH("gc",B2))),5,IF(OR(ISNUMBER(SEARCH("client",B2)),ISNUMBER(SEARCH("tabletserver",B2)),ISNUMBER(SEARCH("test",B2)),ISNUMBER(SEARCH("util",B2)),ISNUMBER(SEARCH("parser",B2)),ISNUMBER(SEARCH("file",B2))),4,IF(OR(ISNUMBER(SEARCH("data",B2)),ISNUMBER(SEARCH("logger",B2)),ISNUMBER(SEARCH("cloud",B2))),2,1)))
+
+Cocoon (ref: https://cocoon.apache.org/2.1/userdocs/concepts/index.html)
+    Functional (Considering responsibilites of components/packages)
+    =IF(ISNUMBER(SEARCH("core",B2)),5,IF(OR(ISNUMBER(SEARCH("generator",B2)),ISNUMBER(SEARCH("transformer",B2)),ISNUMBER(SEARCH("matcher",B2)),ISNUMBER(SEARCH("serializer",B2))),4,IF(OR(ISNUMBER(SEARCH("xsl",B2)),ISNUMBER(SEARCH("xsp",B2))),3,1)))
+    Architecture (Considering the number of each component in the environment)
+    =IF(ISNUMBER(SEARCH("core",B2)),5,IF(OR(ISNUMBER(SEARCH("components",B2))),4,IF(OR(ISNUMBER(SEARCH("xsl",B2))),3,1)))
+
+Neutral Weighting (based on user-defined severity parameters)
+=IF(D2>=0.8,5,IF(D2>=0.6,4,IF(D2>=0.4,3,IF(D2>=0.2,2,IF(D2>=0.1,1)))))
